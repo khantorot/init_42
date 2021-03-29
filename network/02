@@ -1,0 +1,5 @@
+# a) Identify broadcast address
+ifconfig | grep broadcast | awk '{print$6}'
+
+# b) Identify all IP adresses which are part of the same subnet
+arp -a

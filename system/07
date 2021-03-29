@@ -1,0 +1,3 @@
+# Figure out the PID of the SSHD service.
+systemctl show --property MainPID --value sshd.service
+#374

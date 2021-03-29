@@ -1,0 +1,3 @@
+# Explain how connect yourself as new user. (With graphic session and ssh session)
+# graphic session: just enter login and password in DM;
+# ssh session: ssh -p 42022 khan@127.0.0.1

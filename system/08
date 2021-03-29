@@ -1,0 +1,4 @@
+# What file contains the RSA keys of systems that are authorized to connect via SSH?
+# ssh-keygen -b 4096
+# ssh-copy-id khan@localhost
+~/.ssh/authorized_keys

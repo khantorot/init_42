@@ -1,0 +1,25 @@
+# Write a script which delete an ACTIVE user on the VM
+
+user_exists=$(getent passwd $1)
+
+if [ -z "$user_exists" ] 
+then
+        echo "User $1 does not exist"
+else
+        cd /root
+        #Incorporating derobert's suggestion here. 
+        mkdir -p "DeletedUsers"
+        ##Use tar or rsync to do the backup as cp will be inefficient.
+        tar czvf "$1".tar.gz /home/"$1"
+        firewall=$(grep -c "192.168.5.5" /etc/sysconfig/iptables)
+        doers=$(egrep -c "$1" /etc/sudoers)
+        userdel -rf "$1"
+        if [ $firewall -ne 0 ]
+        then 
+            mail -s "$firewallrulesexist" emailaddress < /dev/null
+        fi
+        if [ $doers -ne 0 ]
+        then 
+            sed ^"$1" /#/i
+        fi
+fi
